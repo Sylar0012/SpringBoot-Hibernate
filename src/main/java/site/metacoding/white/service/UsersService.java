@@ -12,7 +12,7 @@ import site.metacoding.white.util.SHA256;
 
 @RequiredArgsConstructor
 @Service
-public class UserService {
+public class UsersService {
     private final UserRepository userRepository;
     private final SHA256 sha256;
 

@@ -8,13 +8,13 @@ import lombok.RequiredArgsConstructor;
 import site.metacoding.white.dto.ResponseDto;
 import site.metacoding.white.dto.UsersReqDto.JoinReqDto;
 import site.metacoding.white.dto.UsersRespDto.JoinRespDto;
-import site.metacoding.white.service.UserService;
+import site.metacoding.white.service.UsersService;
 
 @RequiredArgsConstructor
 @RestController
 public class UserApiController {
 
-    private final UserService userService;
+    private final UsersService userService;
 
     @PostMapping("/join")
     public ResponseDto<?> sava(@RequestBody JoinReqDto joinReqDto) {
