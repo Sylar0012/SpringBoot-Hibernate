@@ -23,6 +23,7 @@ import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 
 import site.metacoding.white.dto.UsersReqDto.JoinReqDto;
+import site.metacoding.white.util.SHA256;
 
 @ActiveProfiles("test")
 @Transactional
@@ -32,8 +33,12 @@ public class UserApiControllerTest {
 
     @Autowired
     private TestRestTemplate rt;
+
     @Autowired
     private ObjectMapper om;
+
+    @Autowired
+    private SHA256 sha256;
 
     private static HttpHeaders headers;
 
@@ -48,7 +53,8 @@ public class UserApiControllerTest {
         // given
         JoinReqDto joinReqDto = new JoinReqDto();
         joinReqDto.setUsername("very");
-        joinReqDto.setPassword("1234");
+        String encPassword = sha256.encrypt("1234");
+        joinReqDto.setPassword(encPassword);
 
         String body = om.writeValueAsString(joinReqDto);
 
